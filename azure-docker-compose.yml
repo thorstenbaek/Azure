@@ -20,4 +20,4 @@ services:
             context: ./dips-ehr-app
         image: thorstenbaek/dips-ehr-app:latest        
         ports:
-            - 4000:80
+            - 80:80
