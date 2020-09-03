@@ -1,0 +1,23 @@
+version: '3.3'
+services:    
+    dips-smartonfhir:
+        build:
+            context: ./dips-smartonfhir
+        image: thorstenbaek/dips-smartonfhir:latest
+        ports:
+            - 8080:8080            
+    growth-chart-app:
+        build:
+            context: ./growth-chart-app
+        image: thorstenbaek/growth-chart-app:latest        
+        ports:
+            - 9000:9000
+    dips-ehr-app:
+        links:
+            - dips-smartonfhir
+            - growth-chart-app        
+        build:
+            context: ./dips-ehr-app
+        image: thorstenbaek/dips-ehr-app:latest        
+        ports:
+            - 4000:80
